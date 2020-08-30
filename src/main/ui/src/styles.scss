@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+body.dark {
+  background: #1b1f23;
+  color: #fff;
+}
+body {
+  font-family: "Metropolis",Arial,sans-serif;
+  background-color: #fff;
+  margin: 0;
+}
+
+body, html {
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  font-size: 15px;
+  font-family: "Metropolis",Arial,sans-serif;
+  color: #000;
+  font-weight: 300;
+  line-height: 1.8rem;
+}
