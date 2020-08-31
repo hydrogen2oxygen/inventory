@@ -10,7 +10,7 @@ export class NavbarComponent implements OnInit {
 
   collapsed = true;
   links = [
-    {title: 'New Item', link: 'item', fragment: 'item'},
+    {title: 'New ItemEntry', link: 'item', fragment: 'item'},
   ];
 
   constructor(private route: ActivatedRoute) { }

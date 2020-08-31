@@ -1,6 +1,6 @@
 package net.hydrogen2oxygen.inventory.service;
 
-import net.hydrogen2oxygen.inventory.domain.Item;
+import net.hydrogen2oxygen.inventory.domain.ItemEntry;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,7 +37,7 @@ class DataBaseServiceTest {
         Assert.assertNull(dataBaseService.getItem(UUID.randomUUID()));
         dataBaseService.deleteItem(UUID.randomUUID());
 
-        Item item = new Item();
+        ItemEntry item = new ItemEntry();
         item = dataBaseService.saveOrUpdateItem(item);
 
         Assert.assertNotNull(item);

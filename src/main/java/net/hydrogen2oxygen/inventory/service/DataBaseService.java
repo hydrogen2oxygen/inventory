@@ -1,20 +1,23 @@
 package net.hydrogen2oxygen.inventory.service;
 
-import net.hydrogen2oxygen.inventory.domain.Item;
+import net.hydrogen2oxygen.inventory.domain.ItemEntry;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.WriteResult;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class DataBaseService {
 
     public static final String DEFAULT_DATABASE_PATH = "inventory.db";
     private Nitrite db;
-    private ObjectRepository<Item> itemObjectRepository;
+    private ObjectRepository<ItemEntry> itemObjectRepository;
 
     @PostConstruct
     public void initService() throws Exception{
@@ -24,18 +27,19 @@ public class DataBaseService {
                 .filePath(DEFAULT_DATABASE_PATH)
                 .openOrCreate("user", "password");
 
-        itemObjectRepository = db.getRepository(Item.class);
+        itemObjectRepository = db.getRepository(ItemEntry.class);
 
         // TODO createIndexes();
     }
 
+    @PreDestroy
     public void closeDatabase() {
         db.close();
     }
 
     // CRUD ITEM
     // CREATE OR UPDATE ITEM
-    public Item saveOrUpdateItem(Item item) {
+    public ItemEntry saveOrUpdateItem(ItemEntry item) {
 
         WriteResult result;
 
@@ -53,11 +57,11 @@ public class DataBaseService {
     }
 
     // READ
-    public List<Item> getAllItems() {
+    public List<ItemEntry> getAllItems() {
         return itemObjectRepository.find().toList();
     }
 
-    public Item getItem(UUID uuid) {
+    public ItemEntry getItem(UUID uuid) {
         return itemObjectRepository.find(ObjectFilters.eq("uuid", uuid)).firstOrDefault();
     }
 
