@@ -10,6 +10,7 @@ public class ItemEntry {
     @Id
     private UUID uuid;
     private String name;
+    private String tags;
     private String description;
     private Calendar lastUpdate;
     private Calendar expirationDate;
@@ -70,5 +71,13 @@ public class ItemEntry {
 
     public void setQuantity(Float quantity) {
         this.quantity = quantity;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 }
